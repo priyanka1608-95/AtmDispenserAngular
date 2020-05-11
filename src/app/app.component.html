@@ -1,0 +1,41 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ATM Money Dispenser</a>
+  </nav>
+  <br>
+  <hr>
+  <div>
+
+    <form #myForm="ngForm" (ngSubmit)="getMoney(myForm)" role="form">
+      <div class="form-group">
+        <b style="color: rgb(0, 0, 0);">Enter Amount to withdraw</b>
+        <br>
+        <hr>
+        <input type="text" ngModel class="form-control" placeholder="Enter amount" name="amt">
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-6">
+          <button type="submit" class="btn btn-primary">Get Money</button>
+        </div>
+        <div class="col-md-6">
+          <button type="reset" (click)="clearResp()" class="btn btn-primary">Reset</button>
+        </div>
+      </div>
+
+
+
+    </form>
+
+  </div>
+  <br>
+  <div class="alert alert-success" *ngIf="status == 'SUCCESS'">
+    <table>
+      <tr *ngFor="let res of result | keyvalue">
+        <td>{{res.key}} = {{res.value}} note</td>
+  
+      </tr>
+    </table>
+  </div>
+  <div class="alert alert-danger" *ngIf="status == 'FAILED'">{{errmsg}}</div>
+</div>
